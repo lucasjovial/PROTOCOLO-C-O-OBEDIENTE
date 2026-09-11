@@ -129,6 +129,8 @@
     filter: drop-shadow(0 24px 46px rgba(0,0,0,0.42));
     transition: transform 0.4s ease;
   }
+  .mockup-frame.full-bleed { max-width: none; }
+  .mockup-frame.full-bleed img { border-radius: 0; filter: none; }
   .mockup-frame:hover img { transform: translateY(-6px) scale(1.012); }
   .mockup-frame.mockup-2 { margin-top: clamp(28px, 4vw, 44px); }
 
@@ -429,10 +431,8 @@ fbq('track', 'PageView');
     </div>
   </div>
 
-  <div class="container">
-    <div class="mockup-frame">
-<img src="assets/mockup-1-oficial.png" alt="Homem cansado sentado no sofá à noite, com dois cães ao lado e uma mancha de xixi no tapete" loading="lazy">
-    </div>
+  <div class="mockup-frame full-bleed">
+<img src="assets/mockup-1-gemini.jpg" alt="Homem cansado sentado no sofá à noite, com dois cães ao lado e uma mancha de xixi no tapete" loading="lazy">
   </div>
 </section>
 
