@@ -391,6 +391,18 @@
     .cta-sticky { transition-duration: 0.01ms; }
   }
 </style>
+
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '986830907297995');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=986830907297995&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
 
@@ -646,7 +658,7 @@
           <li>Guia para regressões + Plano de manutenção</li>
           <li>Os 3 bônus: checklist mestre, guia de regressão e ficha de manutenção avulsa</li>
         </ul>
-        <a href="https://pay.cakto.com.br/fjunap2_1100167" class="btn btn-ghost btn-block">Quero o plano Completo</a>
+        <a href="https://pay.cakto.com.br/fjunap2_1100167" class="btn btn-ghost btn-block" onclick="if(window.fbq)fbq('track','InitiateCheckout',{value:34.90,currency:'BRL',content_name:'Completo'});">Quero o plano Completo</a>
       </div>
 
       <div class="price-card featured">
@@ -659,7 +671,7 @@
           <li>Checklist diário para acompanhar cada exercício</li>
           <li>Tudo o que você precisa pra aplicar o método e ver resultado</li>
         </ul>
-        <a href="https://pay.cakto.com.br/9he45hk_1099686" class="btn btn-primary btn-block">Quero começar agora</a>
+        <a href="https://pay.cakto.com.br/9he45hk_1099686" class="btn btn-primary btn-block" onclick="if(window.fbq)fbq('track','InitiateCheckout',{value:19.90,currency:'BRL',content_name:'Essencial'});">Quero começar agora</a>
       </div>
     </div>
     <p class="price-anchor-note">A maioria decide pelo Essencial, que já é o método completo. O Completo é pra quem quer registrar cada detalhe da evolução desde o Dia 1.</p>
