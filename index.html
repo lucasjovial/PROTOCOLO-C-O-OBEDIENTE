@@ -131,6 +131,10 @@
   }
   .mockup-frame.full-bleed { max-width: none; }
   .mockup-frame.full-bleed img { border-radius: 0; filter: none; }
+  @media (min-width: 900px) {
+    .mockup-frame.full-bleed { max-width: 1200px; margin-left: auto; margin-right: auto; }
+    .mockup-frame.full-bleed img { border-radius: 12px; filter: drop-shadow(0 24px 46px rgba(0,0,0,0.42)); }
+  }
   .mockup-frame:hover img { transform: translateY(-6px) scale(1.012); }
   .mockup-frame.mockup-2 { margin-top: clamp(28px, 4vw, 44px); }
 
