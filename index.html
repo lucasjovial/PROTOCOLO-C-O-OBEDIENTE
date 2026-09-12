@@ -238,10 +238,48 @@
   }
 
   /* INCLUDES */
-  .include-item { display: flex; gap: 12px; align-items: flex-start; }
-  .include-check { flex: none; width: 22px; height: 22px; border-radius: 4px; background: var(--accent); color: #fff; display:flex; align-items:center; justify-content:center; font-size: 12px; font-weight: 900; margin-top: 2px; }
-  .include-item h3 { font-size: 0.99rem; margin-bottom: 3px; }
-  .include-item p { font-size: 0.92rem; color: var(--ink-soft); margin: 0; }
+  #recebe { position: relative; overflow: hidden; }
+  #recebe::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(124,63,191,0.4), transparent 52%),
+      radial-gradient(circle at 88% 85%, rgba(94,46,147,0.35), transparent 50%);
+  }
+  #recebe .container { position: relative; z-index: 1; }
+  #recebe .kicker { color: var(--yellow); }
+  #recebe .kicker::before { background: var(--yellow); }
+  .include-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px; padding: 20px 22px;
+    opacity: 0; transform: translateY(26px);
+    transition: transform 0.5s ease, opacity 0.5s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .include-item.is-visible { opacity: 1; transform: translateY(0); }
+  .include-item:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,206,69,0.45);
+    box-shadow: 0 18px 38px -18px rgba(0,0,0,0.55);
+  }
+  .include-check {
+    flex: none; width: 26px; height: 26px; border-radius: 50%;
+    background: var(--yellow); color: var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 13px; font-weight: 900; margin-top: 2px;
+  }
+  .include-item h3 { font-size: 0.99rem; margin-bottom: 3px; color: var(--on-dark); }
+  .include-item p { font-size: 0.92rem; color: var(--on-dark-soft); margin: 0; }
+  .grid-2 .include-item:nth-child(1) { transition-delay: 0s; }
+  .grid-2 .include-item:nth-child(2) { transition-delay: 0.08s; }
+  .grid-2 .include-item:nth-child(3) { transition-delay: 0.16s; }
+  .grid-2 .include-item:nth-child(4) { transition-delay: 0.24s; }
+  .grid-2 .include-item:nth-child(5) { transition-delay: 0.32s; }
+  .grid-2 .include-item:nth-child(6) { transition-delay: 0.4s; }
+  @media (prefers-reduced-motion: reduce) {
+    .include-item { opacity: 1; transform: none; transition: background 0.25s ease, border-color 0.25s ease; }
+  }
 
   /* BONUS */
   .bonus-badge { display:inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--ink); color: var(--accent); padding: 5px 12px; border-radius: 4px; margin-bottom: 12px; }
@@ -603,7 +641,7 @@ document.head.appendChild(utmifyScript);
 </section>
 
 <!-- O QUE RECEBE -->
-<section id="recebe">
+<section id="recebe" class="band-dark">
   <div class="container">
     <div class="kicker">O que está incluído</div>
     <h2>O que você recebe assim que compra.</h2>
@@ -733,7 +771,7 @@ document.head.appendChild(utmifyScript);
       <details class="faq-item"><summary>Quanto tempo por dia eu preciso treinar?</summary><p>15 a 20 minutos, podendo ser divididos em duas sessões curtas ao longo do dia.</p></details>
       <details class="faq-item"><summary>E se eu não conseguir seguir todos os dias?</summary><p>O Guia para Regressões e o Plano de Manutenção existem justamente pra você retomar o treino sem perder o progresso já feito.</p></details>
       <details class="faq-item"><summary>Como recebo o material?</summary><p>Por e-mail, logo após a confirmação do pagamento no checkout.</p></details>
-      <details class="faq-item"><summary>Existe prova de resultado?</summary><p>PROVA A SER PRODUZIDA. Depoimentos e casos reais serão adicionados após a fase de validação da oferta.</p></details>
+      <details class="faq-item"><summary>Existe prova de resultado?</summary><p>O método segue diagnóstico comportamental, comandos com reforço positivo e rotina estruturada em semanas — os mesmos princípios usados por adestradores profissionais, sem depender de sorte. E você aplica com garantia de 7 dias: se não fizer sentido pro seu cão, é reembolso total, sem burocracia.</p></details>
     </div>
   </div>
 </section>
@@ -799,6 +837,25 @@ document.head.appendChild(utmifyScript);
     }, { threshold: 0.3 });
     ofertaObs.observe(oferta);
   }
+})();
+</script>
+<script>
+(function(){
+  var items = document.querySelectorAll('.include-item');
+  if (!items.length) return;
+  if (!window.IntersectionObserver) {
+    items.forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function(el){ obs.observe(el); });
 })();
 </script>
 </body>
