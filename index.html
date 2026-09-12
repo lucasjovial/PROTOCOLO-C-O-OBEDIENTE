@@ -329,7 +329,7 @@
   }
   .reviews-track {
     display: flex; gap: 16px; width: max-content;
-    animation: reviewsScroll 55s linear infinite;
+    animation: reviewsScroll 22s linear infinite;
   }
   .reviews-viewport:hover .reviews-track { animation-play-state: paused; }
   @keyframes reviewsScroll {
@@ -350,10 +350,8 @@
   .review-name { font-weight: 700; font-size: 0.83rem; color: var(--ink); }
   .review-name span { display: block; font-weight: 400; font-size: 0.76rem; color: var(--ink-soft); margin-top: 1px; }
   @media (prefers-reduced-motion: reduce) {
-    .reviews-track { animation: none; }
-    .reviews-viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; -webkit-mask-image: none; mask-image: none; }
+    .reviews-viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .review-card { scroll-snap-align: start; }
-    .review-card[aria-hidden="true"] { display: none; }
   }
 
   /* FAQ */
