@@ -350,8 +350,9 @@
   .review-name { font-weight: 700; font-size: 0.83rem; color: var(--ink); }
   .review-name span { display: block; font-weight: 400; font-size: 0.76rem; color: var(--ink-soft); margin-top: 1px; }
   @media (prefers-reduced-motion: reduce) {
-    .reviews-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
-    .reviews-viewport { -webkit-mask-image: none; mask-image: none; }
+    .reviews-track { animation: none; }
+    .reviews-viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; -webkit-mask-image: none; mask-image: none; }
+    .review-card { scroll-snap-align: start; }
     .review-card[aria-hidden="true"] { display: none; }
   }
 
